@@ -1,0 +1,16 @@
+{
+  "name": "tailwindcrashcourse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate:css": "tailwindcss -i ./src/input.css -o ./dist/output.css",
+    "dev:css": "npm run generate:css -- --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.1.3"
+  }
+}
