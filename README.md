@@ -18,3 +18,7 @@ Run the Tailwind CLI to compile the input.css during development. The output fil
 ```sh
 npm run dev:css
 ```
+
+## TODO
+
+Updated repo to use remix and react
