@@ -1,7 +1,8 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 
-import type { MetaFunction, LinksFunction } from '@remix-run/node';
 import styles from './tailwind.css';
+
+import type { MetaFunction, LinksFunction } from '@remix-run/node';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
