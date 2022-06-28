@@ -1,7 +1,10 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 
-import type { MetaFunction, LinksFunction } from '@remix-run/node';
+import { Navbar } from './components/Navbar';
+
 import styles from './tailwind.css';
+
+import type { MetaFunction, LinksFunction } from '@remix-run/node';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -19,7 +22,10 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <Navbar />
+        <div className="container mx-auto p-6">
+          <Outlet />
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
