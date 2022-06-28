@@ -27,3 +27,25 @@ export const Button = ({
     </button>
   );
 };
+
+interface ButtonBaseProps {
+  children: React.ReactNode | React.ReactNode[];
+  className?: string;
+  variant?: 'primary' | 'secondary';
+  as?: string | React.ElementType;
+}
+
+export const ButtonBase = ({
+  children,
+  variant = 'primary',
+  className,
+  as = 'button',
+  ...buttonProps
+}: ButtonBaseProps) => {
+  const Element = as;
+  return (
+    <Element className={clsx(classes.base, classes.variant[variant], className)} {...buttonProps}>
+      {children}
+    </Element>
+  );
+};
