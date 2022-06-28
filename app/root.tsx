@@ -1,5 +1,7 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 
+import { Navbar } from './components/Navbar';
+
 import styles from './tailwind.css';
 
 import type { MetaFunction, LinksFunction } from '@remix-run/node';
@@ -20,7 +22,10 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <Navbar />
+        <div className="container mx-auto p-6">
+          <Outlet />
+        </div>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
