@@ -10,8 +10,8 @@ interface ButtonProps {
 const classes = {
   base: 'p-3 px-6 rounded-full text-white',
   variant: {
-    primary: 'bg-brightRed hover:bg-brightRedLight',
-    secondary: 'bg-darkBlue hover:bg-veryDarkBlue',
+    primary: 'bg-brightRed hover:bg-brightRedLight disabled:bg-brightRedLight',
+    secondary: 'bg-darkBlue hover:bg-veryDarkBlue disabled:bg-veryDarkBlue',
   },
 };
 
