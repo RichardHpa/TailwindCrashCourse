@@ -13,11 +13,11 @@ export const Navbar = () => {
         </div>
 
         <div className="hidden space-x-6 md:flex">
-          <NavLink to="#">Pricing</NavLink>
-          <NavLink to="#">Product</NavLink>
-          <NavLink to="#">About Us</NavLink>
-          <NavLink to="#">Careers</NavLink>
-          <NavLink to="#">Community</NavLink>
+          <NavLink to="/pricing">Pricing</NavLink>
+          <NavLink to="/product">Product</NavLink>
+          <NavLink to="/about">About Us</NavLink>
+          <NavLink to="/careers">Careers</NavLink>
+          <NavLink to="/community">Community</NavLink>
         </div>
 
         <Button onClick={handleOnClick}>Get Started</Button>
