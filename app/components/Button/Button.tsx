@@ -6,14 +6,15 @@ import type { ReactNode } from 'react';
 import type { LinkProps } from '@remix-run/react';
 
 interface ButtonBaseProps {
-  variant?: 'primary' | 'secondary';
+  color?: 'primary' | 'secondary';
+  variant?: 'outlined' | 'contained';
   children: ReactNode | ReactNode[];
   className?: string;
 }
 
 const classes = {
   base: 'p-3 px-6 rounded-full text-white',
-  variant: {
+  color: {
     primary: 'bg-brightRed hover:bg-brightRedLight',
     secondary: 'bg-darkBlue hover:bg-veryDarkBlue',
   },
@@ -21,12 +22,12 @@ const classes = {
 
 export const Button = ({
   children,
-  variant = 'primary',
+  color = 'primary',
   className,
   ...buttonProps
 }: ButtonBaseProps & JSX.IntrinsicElements['button']) => {
   return (
-    <button className={clsx(classes.base, classes.variant[variant], className)} {...buttonProps}>
+    <button className={clsx(classes.base, classes.color[color], className)} {...buttonProps}>
       {children}
     </button>
   );
@@ -36,18 +37,33 @@ type ButtonLinkProps = ButtonBaseProps & LinkProps;
 
 export const ButtonLink = ({
   children,
-  variant = 'primary',
+  color = 'primary',
   className,
   to,
   ...buttonProps
 }: ButtonLinkProps) => {
   return (
-    <Link
-      to={to}
-      className={clsx(classes.base, classes.variant[variant], className)}
-      {...buttonProps}
-    >
+    <Link to={to} className={clsx(classes.base, classes.color[color], className)} {...buttonProps}>
       {children}
     </Link>
+  );
+};
+
+// TODO: Need to figure out how to combine color and variant props.
+function getClassName({ className }: { className?: string; variant: string; color: string }) {
+  return clsx('p-3 rounded-full hover:bg-gray-50', className);
+}
+
+export const IconButton = ({
+  children,
+  color = 'primary',
+  variant = 'contained',
+  className,
+  ...buttonProps
+}: ButtonBaseProps & JSX.IntrinsicElements['button']) => {
+  return (
+    <button className={getClassName({ variant, color, className })} {...buttonProps}>
+      {children}
+    </button>
   );
 };
