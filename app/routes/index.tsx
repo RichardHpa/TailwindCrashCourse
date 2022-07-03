@@ -2,6 +2,12 @@ import { Button } from '~/components/Button';
 import { Heading } from '~/components/Heading';
 import { Paragraph } from '~/components/Paragraph';
 
+import { FeatureGroup } from '~/containers/FeatureGroup';
+
+import { features } from '~/fixtures/features';
+
+import type { Feature } from '~/types/feature';
+
 export default function Index() {
   return (
     <>
@@ -22,6 +28,25 @@ export default function Index() {
 
           <div className="md:w-1/2">
             <img src="images/illustration-intro.svg" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div className="container flex flex-col px-4 mx-auto mt-10 space-y-12 md:space-y-0 md:flex-row">
+          <div className="flex flex-col space-y-12 md:w-1/2">
+            <Heading variant="h2" className="max-w-md text-center md:text-left">
+              What's different about Manage?
+            </Heading>
+            <Paragraph className="max-w-sm text-center text-darkGrayishBlue md:text-left">
+              Manage provides all the functionality your team needs, without the complexity. Our
+              software is tailor-made for modern digital product teams.
+            </Paragraph>
+          </div>
+          <div className="flex flex-col space-y-8 md:w-1/2">
+            {features.map((feature: Feature) => (
+              <FeatureGroup key={feature.id} feature={feature} />
+            ))}
           </div>
         </div>
       </section>
