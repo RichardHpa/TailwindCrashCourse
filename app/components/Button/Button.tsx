@@ -6,7 +6,7 @@ import type { ReactNode } from 'react';
 import type { LinkProps } from '@remix-run/react';
 
 interface ButtonBaseProps {
-  color?: 'primary' | 'secondary';
+  color?: 'primary' | 'secondary' | 'white';
   variant?: 'outlined' | 'contained';
   children: ReactNode | ReactNode[];
   className?: string;
@@ -17,6 +17,7 @@ const classes = {
   color: {
     primary: 'bg-brightRed hover:bg-brightRedLight',
     secondary: 'bg-darkBlue hover:bg-veryDarkBlue',
+    white: 'bg-white text-brightRed hover:bg-veryDarkBlue',
   },
 };
 
