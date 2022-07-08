@@ -16,7 +16,7 @@ export const Footer = () => {
           </div>
 
           <div className="flex justify-center space-x-4">
-            <a>
+            <a href="/">
               <img src="images/icon-facebook.svg" alt="" className="h-8" />
             </a>
 
