@@ -1,6 +1,7 @@
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 
-import { Navbar } from './components/Navbar';
+import { Navbar } from '~/components/Navbar';
+import { Footer } from '~/components/Footer';
 
 import styles from './tailwind.css';
 
@@ -26,6 +27,7 @@ export default function App() {
         <div className="container mx-auto p-6">
           <Outlet />
         </div>
+        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
