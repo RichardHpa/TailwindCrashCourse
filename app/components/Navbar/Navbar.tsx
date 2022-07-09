@@ -1,12 +1,19 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 
+import { Theme, useTheme } from '~/utils/ThemeProvider';
+
 import { NavLink } from '~/components/NavLink';
 import { Button, IconButton } from '~/components/Button';
-import { MenuIcon } from '@heroicons/react/solid';
+import { MenuIcon, MoonIcon, SunIcon } from '@heroicons/react/solid';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT));
+  };
 
   const handleOpenNav = () => {
     setIsOpen(!isOpen);
@@ -31,6 +38,14 @@ export const Navbar = () => {
 
         <IconButton variant="outlined" onClick={handleOpenNav} className="md:hidden">
           <MenuIcon className="h-6 w-6" />
+        </IconButton>
+
+        <IconButton variant="outlined" onClick={toggleTheme}>
+          {theme === Theme.LIGHT ? (
+            <MoonIcon className="h-6 w-6" />
+          ) : (
+            <SunIcon className="h-6 w-6" />
+          )}
         </IconButton>
       </div>
       {isOpen && (
