@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ReactNode } from 'react';
 
 const classes = {
-  base: 'font-bold',
+  base: 'font-bold text-slate-900 dark:text-white',
   variant: {
     h1: 'text-4xl md:text-5xl',
     h2: 'text-3xl md:text-4xl',

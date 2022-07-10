@@ -1,6 +1,68 @@
-import { NavLink } from '~/components/NavLink';
+import { Link } from '@remix-run/react';
 import { Button } from '~/components/Button';
 import { Input } from '~/components/Input';
+import { CompanyLogo } from '~/components/CompanyLogo';
+
+const primaryLinks = [
+  {
+    label: 'Home',
+    to: '/',
+  },
+  {
+    label: 'Pricing',
+    to: '/pricing',
+  },
+  {
+    label: 'Products',
+    to: '/products',
+  },
+  {
+    label: 'About',
+    to: '/about',
+  },
+];
+const secondaryLinks = [
+  {
+    label: 'Careers',
+    to: '/careers',
+  },
+  {
+    label: 'Community',
+    to: '/community',
+  },
+  {
+    label: 'Privacy Policy',
+    to: '/privacy',
+  },
+];
+
+const socialLinks = [
+  {
+    label: 'Facebook',
+    to: 'https://facebook.com',
+    img: 'icon-facebook.svg',
+  },
+  {
+    label: 'YouTube',
+    to: 'https://youtube.com',
+    img: 'icon-youtube.svg',
+  },
+  {
+    label: 'Twitter',
+    to: 'https://twitter.com',
+    img: 'icon-twitter.svg',
+  },
+  {
+    label: 'Pinterest',
+    to: 'https://pinterest.com',
+    img: 'icon-pinterest.svg',
+  },
+  {
+    label: 'Instagram',
+    to: 'https://instagram.com',
+    img: 'icon-instagram.svg',
+  },
+];
 
 export const Footer = () => {
   return (
@@ -12,57 +74,32 @@ export const Footer = () => {
           </div>
 
           <div>
-            <img src="images/logo-white.svg" className="h-8" alt="" />
+            <CompanyLogo className="h-8" variant="light" />
           </div>
 
           <div className="flex justify-center space-x-4">
-            <a href="/">
-              <img src="images/icon-facebook.svg" alt="" className="h-8" />
-            </a>
-
-            <a href="/">
-              <img src="images/icon-youtube.svg" alt="" className="h-8" />
-            </a>
-
-            <a href="/">
-              <img src="images/icon-twitter.svg" alt="" className="h-8" />
-            </a>
-
-            <a href="/">
-              <img src="images/icon-pinterest.svg" alt="" className="h-8" />
-            </a>
-
-            <a href="/">
-              <img src="images/icon-instagram.svg" alt="" className="h-8" />
-            </a>
+            {socialLinks.map(link => (
+              <a href={link.to} key={link.label}>
+                <img src={`images/${link.img}`} alt={link.label} className="h-8" />
+              </a>
+            ))}
           </div>
         </div>
 
         <div className="flex justify-around space-x-32">
           <div className="flex flex-col space-y-3 text-white">
-            <NavLink to="/" className="hover:text-brightRed">
-              Home
-            </NavLink>
-            <NavLink to="pricing" className="hover:text-brightRed">
-              Pricing
-            </NavLink>
-            <NavLink to="products" className="hover:text-brightRed">
-              Products
-            </NavLink>
-            <NavLink to="about" className="hover:text-brightRed">
-              About
-            </NavLink>
+            {primaryLinks.map(link => (
+              <Link key={link.to} to={`${link.to.toLowerCase()}`} className="hover:text-brightRed">
+                {link.label}
+              </Link>
+            ))}
           </div>
           <div className="flex flex-col space-y-3 text-white">
-            <NavLink to="careers" className="hover:text-brightRed">
-              Careers
-            </NavLink>
-            <NavLink to="community" className="hover:text-brightRed">
-              Community
-            </NavLink>
-            <NavLink to="privacy" className="hover:text-brightRed">
-              Privacy Policy
-            </NavLink>
+            {secondaryLinks.map(link => (
+              <Link key={link.to} to={`${link.to.toLowerCase()}`} className="hover:text-brightRed">
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
 

@@ -5,7 +5,32 @@ import { Theme, useTheme } from '~/utils/ThemeProvider';
 
 import { NavLink } from '~/components/NavLink';
 import { Button, IconButton } from '~/components/Button';
+import { CompanyLogo } from '~/components/CompanyLogo';
+
 import { MenuIcon, MoonIcon, SunIcon } from '@heroicons/react/solid';
+
+const navLinks = [
+  {
+    label: 'Pricing',
+    to: '/pricing',
+  },
+  {
+    label: 'Product',
+    to: '/product',
+  },
+  {
+    label: 'About',
+    to: '/about',
+  },
+  {
+    label: 'Careers',
+    to: '/careers',
+  },
+  {
+    label: 'Community',
+    to: '/community',
+  },
+];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,57 +48,49 @@ export const Navbar = () => {
     <nav className="relative container mx-auto p-6">
       <div className="flex items-center justify-between">
         <div className="pt-2">
-          <img src="images/logo.svg" alt="Manage Logo" />
+          <CompanyLogo variant={theme === Theme.LIGHT ? 'dark' : 'light'} />
         </div>
 
         <div className="space-x-6 hidden md:flex">
-          <NavLink to="/pricing">Pricing</NavLink>
-          <NavLink to="/product">Product</NavLink>
-          <NavLink to="/about">About Us</NavLink>
-          <NavLink to="/careers">Careers</NavLink>
-          <NavLink to="/community">Community</NavLink>
+          {navLinks.map(link => (
+            <NavLink key={link.label} to={link.to}>
+              {link.label}
+            </NavLink>
+          ))}
         </div>
 
-        <Button className="hidden md:block">Get Started</Button>
+        <div className="flex space-x-2">
+          <Button className="hidden md:block">Get Started</Button>
 
-        <IconButton variant="outlined" onClick={handleOpenNav} className="md:hidden">
-          <MenuIcon className="h-6 w-6" />
-        </IconButton>
+          <IconButton variant="outlined" onClick={handleOpenNav} className="md:hidden">
+            <MenuIcon className="h-6 w-6" />
+          </IconButton>
 
-        <IconButton variant="outlined" onClick={toggleTheme}>
-          {theme === Theme.LIGHT ? (
-            <MoonIcon className="h-6 w-6" />
-          ) : (
-            <SunIcon className="h-6 w-6" />
-          )}
-        </IconButton>
+          <IconButton variant="outlined" onClick={toggleTheme}>
+            {theme === Theme.LIGHT ? (
+              <MoonIcon className="h-6 w-6" />
+            ) : (
+              <SunIcon className="h-6 w-6" />
+            )}
+          </IconButton>
+        </div>
       </div>
       {isOpen && (
         <div className="md:hidden">
           <div
             className={clsx(
-              'absolute flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md',
+              'absolute flex-col items-center self-end py-8 mt-10 space-y-6 font-bold bg-white dark:bg-gray-800 sm:w-auto sm:self-center left-6 right-6 drop-shadow-md',
               {
                 flex: isOpen,
                 hidden: !isOpen,
               }
             )}
           >
-            <NavLink to="/pricing" onClick={handleOpenNav}>
-              Pricing
-            </NavLink>
-            <NavLink to="/product" onClick={handleOpenNav}>
-              Product
-            </NavLink>
-            <NavLink to="/about" onClick={handleOpenNav}>
-              About Us
-            </NavLink>
-            <NavLink to="/careers" onClick={handleOpenNav}>
-              Careers
-            </NavLink>
-            <NavLink to="/community" onClick={handleOpenNav}>
-              Community
-            </NavLink>
+            {navLinks.map(link => (
+              <NavLink key={link.label} to={link.to} onClick={handleOpenNav}>
+                {link.label}
+              </NavLink>
+            ))}
           </div>
         </div>
       )}

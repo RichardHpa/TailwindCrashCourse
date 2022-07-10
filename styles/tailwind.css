@@ -2,12 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-html.dark {
-  --text-colour: white;
-  --background-colour: black;
-}
-
-body {
+html.light body {
   background-image: url('/images/bg-tablet-pattern.svg');
   background-repeat: no-repeat;
   background-size: 800px;

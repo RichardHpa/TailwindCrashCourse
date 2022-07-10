@@ -52,7 +52,10 @@ export const ButtonLink = ({
 
 // TODO: Need to figure out how to combine color and variant props.
 function getClassName({ className }: { className?: string; variant: string; color: string }) {
-  return clsx('p-3 rounded-full hover:bg-gray-50', className);
+  return clsx(
+    'p-3 rounded-full text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-gray-800',
+    className
+  );
 }
 
 export const IconButton = ({
