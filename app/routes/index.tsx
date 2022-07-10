@@ -84,7 +84,9 @@ export default function Index() {
           </Heading>
 
           <div>
-            <Button color="white">Get Started</Button>
+            <Button className="bg-white text-brightRed hover:bg-veryDarkBlue" color="custom">
+              Get Started
+            </Button>
           </div>
         </div>
       </section>

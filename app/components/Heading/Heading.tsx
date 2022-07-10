@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { overrideTailwindClasses } from 'tailwind-override';
 
 import type { ReactNode } from 'react';
 
@@ -24,7 +25,7 @@ export const Heading = ({ children, variant = 'h1', className, ...headingProps }
   const Component = variant;
   return (
     <Component
-      className={clsx(classes.base, classes.variant[variant], className)}
+      className={overrideTailwindClasses(clsx(classes.base, classes.variant[variant], className))}
       {...headingProps}
     >
       {children}
