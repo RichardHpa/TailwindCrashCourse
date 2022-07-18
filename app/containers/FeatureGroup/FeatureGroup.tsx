@@ -25,7 +25,7 @@ export const FeatureGroup = ({ feature }: FeatureGroupProps) => {
         <Heading variant="h5" className="hidden mb-4 md:block">
           {feature.name}
         </Heading>
-        <Paragraph>{feature.description}</Paragraph>
+        <Paragraph className="max-w-sm">{feature.description}</Paragraph>
       </div>
     </div>
   );

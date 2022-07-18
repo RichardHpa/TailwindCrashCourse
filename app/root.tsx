@@ -54,11 +54,13 @@ export function App() {
         <NonFlashOfWrongThemeEls ssrTheme={Boolean(data.theme)} />
       </head>
       <body className="bg-white dark:bg-gray-900">
-        <Navbar />
-        <div className="container mx-auto p-6">
-          <Outlet />
+        <div className="flex flex-col h-screen justify-between">
+          <Navbar />
+          <div className="container mx-auto p-6 mb-auto">
+            <Outlet />
+          </div>
+          <Footer />
         </div>
-        <Footer />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
