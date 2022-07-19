@@ -45,4 +45,8 @@ export const components: ComponentMap = {
     );
     return memo(a);
   })(),
+  hr: (() => {
+    const hr = (props: any) => <hr className="my-2" {...props} />;
+    return memo(hr);
+  })(),
 };

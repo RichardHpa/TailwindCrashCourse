@@ -24,8 +24,8 @@ const navLinks = [
     to: '/about',
   },
   {
-    label: 'Careers',
-    to: '/careers',
+    label: 'Posts',
+    to: '/posts',
   },
   {
     label: 'Community',
