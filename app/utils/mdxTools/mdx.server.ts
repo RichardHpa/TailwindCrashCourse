@@ -44,7 +44,9 @@ export async function getMDXFiles(folder: string) {
 
 export const getMDXFile = async (slug: string, folder: string) => {
   if (!slug) throw new Response('Not found', { status: 404 });
+
   const { default: remarkGfm } = await import('remark-gfm');
+
   let fullPath = path.join(process.cwd(), folder, slug);
   let postDir;
   let mdxSource = '';

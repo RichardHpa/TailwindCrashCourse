@@ -2,6 +2,9 @@ import { memo } from 'react';
 
 import { Heading } from '~/components/Heading';
 import { Paragraph } from '~/components/Paragraph';
+import { CodeBlock } from '~/components/Code';
+import { List } from '~/components/List';
+import { Table, TableBody, TableHead, HeaderCell, Cell, TableRow } from '~/components/Table';
 
 import type { ComponentMap } from 'mdx-bundler/client';
 
@@ -48,5 +51,42 @@ export const components: ComponentMap = {
   hr: (() => {
     const hr = (props: any) => <hr className="my-2" {...props} />;
     return memo(hr);
+  })(),
+
+  ul: (() => {
+    const ul = (props: any) => <List {...props} type="ul" />;
+    return memo(ul);
+  })(),
+  ol: (() => {
+    const ol = (props: any) => <List {...props} type="ol" />;
+    return memo(ol);
+  })(),
+  table: (() => {
+    const table = (props: any) => <Table {...props} />;
+    return memo(table);
+  })(),
+  code: (() => {
+    const code = (props: any) => <CodeBlock {...props} />;
+    return memo(code);
+  })(),
+  tbody: (() => {
+    const tbody = (props: any) => <TableBody {...props} />;
+    return memo(tbody);
+  })(),
+  thead: (() => {
+    const thead = (props: any) => <TableHead {...props} />;
+    return memo(thead);
+  })(),
+  th: (() => {
+    const th = (props: any) => <HeaderCell {...props} />;
+    return memo(th);
+  })(),
+  td: (() => {
+    const td = (props: any) => <Cell {...props} />;
+    return memo(td);
+  })(),
+  tr: (() => {
+    const tr = (props: any) => <TableRow {...props} />;
+    return memo(tr);
   })(),
 };
