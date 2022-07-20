@@ -4,7 +4,7 @@ import { overrideTailwindClasses } from 'tailwind-override';
 import type { ReactNode } from 'react';
 
 const classes = {
-  base: 'font-bold text-slate-900 dark:text-white',
+  base: 'font-bold text-slate-900 dark:text-white mb-4',
   variant: {
     h1: 'text-4xl md:text-5xl',
     h2: 'text-3xl md:text-4xl',

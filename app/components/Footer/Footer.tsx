@@ -80,7 +80,7 @@ export const Footer = () => {
           <div className="flex justify-center space-x-4">
             {socialLinks.map(link => (
               <a href={link.to} key={link.label}>
-                <img src={`images/${link.img}`} alt={link.label} className="h-8" />
+                <img src={`/images/${link.img}`} alt={link.label} className="h-8" />
               </a>
             ))}
           </div>

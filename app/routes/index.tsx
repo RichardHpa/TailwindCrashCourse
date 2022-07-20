@@ -23,7 +23,7 @@ export default function Index() {
             <Heading className="max-w-md text-center md:text-left">
               Bring everyone together to build better products
             </Heading>
-            <Paragraph className="text-center text-darkGrayishBlue md:text-left">
+            <Paragraph className="max-w-sm text-center text-darkGrayishBlue md:text-left">
               Manage makes it simple for software teams to plan day-to-day tasks while keeping the
               larger team goals in view.
             </Paragraph>

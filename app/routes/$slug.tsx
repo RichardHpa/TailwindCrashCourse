@@ -1,21 +1,34 @@
-import { ButtonLink } from '~/components/Button';
+import { useLoaderData } from '@remix-run/react';
+import { json } from '@remix-run/node';
+import invariant from 'tiny-invariant';
+
+import { getMDXFile } from '~/utils/mdxTools/mdx.server';
+
 import { Heading } from '~/components/Heading';
-import { Paragraph } from '~/components/Paragraph';
+import { MDXComponent } from '~/components/MDXComponent';
+
+import { FourOhFour } from '~/Errors';
+
+import type { LoaderFunction } from '@remix-run/node';
+
+export const loader: LoaderFunction = async ({ params, request }) => {
+  invariant(params.slug, 'expected params.slug');
+  return json(await getMDXFile(params.slug, 'pages'));
+};
 
 export default () => {
+  const { code, frontmatter } = useLoaderData();
+
+  if (!code) {
+    return <FourOhFour />;
+  }
+
   return (
-    <section className="flex items-center h-full p-16 ">
-      <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
-        <div className="max-w-md text-center">
-          <Heading className="mb-8 font-extrabold text-9xl md:text-9xl dark:text-gray-600">
-            <span className="sr-only">Error</span>404
-          </Heading>
-          <Heading variant="h4">Sorry, we couldn't find this page.</Heading>
-          <Paragraph className="mt-4 mb-8">
-            Currently no other links other than the homepage have been developed
-          </Paragraph>
-          <ButtonLink to="/">Back to homepage</ButtonLink>
-        </div>
+    <section>
+      <Heading variant="h1">{frontmatter.title}</Heading>
+      <hr />
+      <div className="mt-4">
+        <MDXComponent code={code} />
       </div>
     </section>
   );

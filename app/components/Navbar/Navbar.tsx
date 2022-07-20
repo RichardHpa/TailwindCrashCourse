@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import clsx from 'clsx';
+import { Link } from '@remix-run/react';
 
 import { Theme, useTheme } from '~/utils/ThemeProvider';
 
@@ -23,8 +24,8 @@ const navLinks = [
     to: '/about',
   },
   {
-    label: 'Careers',
-    to: '/careers',
+    label: 'Posts',
+    to: '/posts',
   },
   {
     label: 'Community',
@@ -48,7 +49,9 @@ export const Navbar = () => {
     <nav className="relative container mx-auto p-6">
       <div className="flex items-center justify-between">
         <div className="pt-2">
-          <CompanyLogo variant={theme === Theme.LIGHT ? 'dark' : 'light'} />
+          <Link to="/">
+            <CompanyLogo variant={theme === Theme.LIGHT ? 'dark' : 'light'} />
+          </Link>
         </div>
 
         <div className="space-x-6 hidden md:flex">
