@@ -6,19 +6,21 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useCatch,
   useLoaderData,
+  useLocation,
 } from '@remix-run/react';
 
-import { NonFlashOfWrongThemeEls, ThemeProvider, useTheme } from '~/utils/ThemeProvider';
+import { NonFlashOfWrongThemeEls, ThemeProvider, useTheme, Theme } from '~/utils/ThemeProvider';
+import { getThemeSession } from '~/utils/theme.server';
 
 import { Navbar } from '~/components/Navbar';
 import { Footer } from '~/components/Footer';
-import { getThemeSession } from '~/utils/theme.server';
+import { ErrorPage } from '~/Errors';
 
 import styles from './tailwind.css';
 
 import type { MetaFunction, LinksFunction, LoaderFunction } from '@remix-run/node';
-import type { Theme } from '~/utils/ThemeProvider';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -76,5 +78,64 @@ export default function AppWithProviders() {
     <ThemeProvider specifiedTheme={data.theme}>
       <App />
     </ThemeProvider>
+  );
+}
+
+export function HtmlWrapper({
+  children,
+  theme = Theme.DARK,
+}: {
+  children: React.ReactNode;
+  theme?: Theme;
+}) {
+  return (
+    <html lang="en" className={clsx(theme)}>
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body className="bg-white dark:bg-gray-900 text-black dark:text-gray-200">
+        <div className="flex flex-col h-screen justify-between">{children}</div>
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
+
+export function CatchBoundary() {
+  const caught = useCatch();
+  const location = useLocation();
+  console.error('CatchBoundary', caught);
+  if (caught.status === 404) {
+    return (
+      <HtmlWrapper theme={Theme.DARK}>
+        <ErrorPage
+          heroProps={{
+            title: "Oh no, you found a page that's missing stuff.",
+            subtitle: `Sorry, we couldn't find a route ${location.pathname}.`,
+            code: 404,
+          }}
+        />
+      </HtmlWrapper>
+    );
+  }
+  throw new Error(`Unhandled error: ${caught.status}`);
+}
+
+export function ErrorBoundary({ error }: { error: Error }) {
+  console.error('ErrorBoundary', error);
+  const location = useLocation();
+  return (
+    <HtmlWrapper theme={Theme.DARK}>
+      <ErrorPage
+        heroProps={{
+          title: 'Oh no, something did not go well.',
+          subtitle: `"${location.pathname}" is currently not working.`,
+          code: 500,
+        }}
+      />
+    </HtmlWrapper>
   );
 }
