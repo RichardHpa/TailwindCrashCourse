@@ -7,8 +7,6 @@ import { getMDXFile } from '~/utils/mdxTools/mdx.server';
 import { Heading } from '~/components/Heading';
 import { MDXComponent } from '~/components/MDXComponent';
 
-import { FourOhFour } from '~/Errors';
-
 import type { LoaderFunction } from '@remix-run/node';
 
 export const loader: LoaderFunction = async ({ params, request }) => {
@@ -18,10 +16,6 @@ export const loader: LoaderFunction = async ({ params, request }) => {
 
 export default () => {
   const { code, frontmatter } = useLoaderData();
-
-  if (!code) {
-    return <FourOhFour />;
-  }
 
   return (
     <section>

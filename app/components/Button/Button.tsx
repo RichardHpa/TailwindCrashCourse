@@ -22,7 +22,7 @@ interface ButtonBaseProps {
 // };
 
 const classes = {
-  base: 'p-3 px-6 rounded-full',
+  base: 'p-3 px-6 rounded-full inline-block',
   variant: {
     outlined: {
       primary: 'bg-transparent text-brightRed border-brightRed border-2 hover:bg-brightRedSupLight',

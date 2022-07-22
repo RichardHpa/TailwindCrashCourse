@@ -8,7 +8,7 @@ interface ParagraphProps {
 }
 
 const classes = {
-  base: 'text-darkGrayishBlue mb-2',
+  base: 'text-darkGrayishBlue mb-4',
 };
 
 export const Paragraph = ({ children, className }: ParagraphProps) => {
